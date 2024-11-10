@@ -1067,6 +1067,7 @@ def main():
                             api.upload_folder(
                                 repo_id=repo_id,
                                 folder_path=training_args.output_dir,
+                                private=True,
                                 commit_message=f"Saving train state of step {cur_step}",
                                 run_as_future=True,
                             )
