@@ -562,7 +562,15 @@ def main():
                 vectorized_datasets[split] = concatenate_datasets([vectorized_datasets[split], tmp_labels], axis=1)
 
         accelerator.free_memory()
-        del generate_labels, all_lens
+
+        try:
+            del generate_labels
+        except:
+            pass
+        try:
+            del all_lens
+        except:
+            pass
 
         with accelerator.local_main_process_first():
             # NOTE: filtering is done at the end because in the `datasets` library, caching audio files is done after most operations
@@ -601,7 +609,7 @@ def main():
         if accelerator.is_main_process:
             vectorized_datasets.save_to_disk(
                 data_args.save_to_disk,
-                num_proc=min(data_args.preprocessing_num_workers, len(vectorized_datasets["eval"]) - 1),
+                num_proc=4,
             )
         accelerator.wait_for_everyone()
         logger.info(f"Dataset saved at {data_args.save_to_disk}")
