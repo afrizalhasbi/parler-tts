@@ -334,6 +334,7 @@ def main():
         config=config,
         token=data_args.token,
         trust_remote_code=data_args.trust_remote_code,
+        torch_dtype=torch.bfloat16,
         attn_implementation={"decoder": model_args.attn_implementation, "text_encoder": "eager"},
     )
 
