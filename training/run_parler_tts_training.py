@@ -442,6 +442,8 @@ def main():
                 batch["n_quantizers"] = num_codebooks
 
             with torch.no_grad():
+                for key in batch:
+                    batch[key] = batch[key].to(torch.bfloat16)
                 labels = audio_decoder.encode(**batch)["audio_codes"]
             output = {}
             output["len_audio"] = len_audio
