@@ -83,7 +83,7 @@ def main():
 
     # Sending telemetry. Tracking the example usage helps us better allocate resources to maintain them. The
     # information sent is the one passed as arguments along with your Python/PyTorch versions.
-    send_example_telemetry("run_parler_tts", model_args, data_args)
+    # send_example_telemetry("run_parler_tts", model_args, data_args)
 
     if training_args.dtype == "float16":
         mixed_precision = "fp16"
