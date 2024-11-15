@@ -373,3 +373,7 @@ class ParlerTTSTrainingArguments(Seq2SeqTrainingArguments):
         default=None,
         metadata={"help": "Weights applied to each codebook."},
     )
+    resume_from_checkpoint: Optional[str] = field(
+        default=False,
+        metadata={"help": "Insert checkpoint dir to resume from."},
+    )
