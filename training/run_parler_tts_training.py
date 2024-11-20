@@ -444,7 +444,7 @@ def main():
             with torch.no_grad():
                 for key in batch:
                     if isinstance(batch[key], torch.Tensor):
-                        batch[key] = batch[key].to(torch.bfloat16)
+                        batch[key] = batch[key].to(torch_dtype)
                 labels = audio_decoder.encode(**batch)["audio_codes"]
             output = {}
             output["len_audio"] = len_audio
