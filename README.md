@@ -6,6 +6,11 @@ cd parler-tts
 pip install --quiet -e .[train]
 ```
 
+### Train
+```
+accelerate launch run.py config.json
+```
+
 ### 🎲 Random voice
 
 
