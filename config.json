@@ -1,0 +1,59 @@
+{
+    "model_name_or_path": "feedloop-ai/parler-tts-mini-v1-bf16",
+    "save_to_disk":  "./tmp_dataset_audio/",
+    "temporary_save_to_disk": "./audio_code_tmp/",
+
+    "wandb_project": "parler-tuning",
+
+    "feature_extractor_name":"feedloop-ai/parler-tts-mini-v1-bf16",
+    "description_tokenizer_name":"feedloop-ai/parler-tts-mini-v1-bf16",
+    "prompt_tokenizer_name":"google/flan-t5-large",
+
+    "report_to": ["wandb"],
+    "overwrite_output_dir": true,
+    "output_dir": "output-ft",
+
+    "train_dataset_name": "",
+    "train_dataset_config_name": "default",
+  
+    "target_audio_column_name": "audio",
+    "description_column_name": "text_description",
+    "prompt_column_name": "text",
+    
+    "max_duration_in_seconds": 30,
+    "min_duration_in_seconds": 2.0,
+    "max_text_length": 600,
+
+    "group_by_length": true,
+    "add_audio_samples_to_wandb": false,
+    "id_column_name": "id",
+
+    "preprocessing_num_workers": 4,
+    "do_train": true,
+    "max_steps": 2400,
+    "gradient_accumulation_steps": 16,
+    "gradient_checkpointing": true,
+    "per_device_train_batch_size": 16,
+    "learning_rate": 0.00095,
+    "adam_beta1": 0.9,
+    "adam_beta2": 0.99,
+    "weight_decay": 0.01,
+
+    "lr_scheduler_type": "constant_with_warmup",
+    "warmup_ratio":  0.1,
+
+    "logging_steps": 1000,
+    "freeze_text_encoder": true,
+
+
+    "do_eval": false, 
+    "predict_with_generate": true,
+    "include_inputs_for_metrics": true,
+
+    "audio_encoder_per_device_batch_size":24,
+    "dtype": "bfloat16",
+    "seed": 456,
+
+    "dataloader_num_workers":4,
+    "attn_implementation": "sdpa"
+}
