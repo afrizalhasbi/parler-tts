@@ -1,53 +1,9 @@
 # Parler-TTS
 
-Parler-TTS is a lightweight text-to-speech (TTS) model that can generate high-quality, natural sounding speech in the style of a given speaker (gender, pitch, speaking style, etc). It is a reproduction of work from the paper [Natural language guidance of high-fidelity text-to-speech with synthetic annotations](https://www.text-description-to-speech.com) by Dan Lyth and Simon King, from Stability AI and Edinburgh University respectively.
-
-Contrarily to other TTS models, Parler-TTS is a **fully open-source** release. All of the datasets, pre-processing, training code and weights are released publicly under permissive license, enabling the community to build on our work and develop their own powerful TTS models.
-
-This repository contains the inference and training code for Parler-TTS. It is designed to accompany the [Data-Speech](https://github.com/huggingface/dataspeech) repository for dataset annotation.
-
-> [!IMPORTANT]
-> **08/08/2024:** We are proud to release two new Parler-TTS checkpoints:
-> 1. [Parler-TTS Mini](https://huggingface.co/parler-tts/parler-tts-mini-v1), an 880M parameter model.
-> 2. [Parler-TTS Large](https://huggingface.co/parler-tts/parler-tts-large-v1), a 2.3B parameter model.
->
-> These checkpoints have been trained on 45k hours of audiobook data.
->
-> In addition, the code is optimized for much faster generation: we've added SDPA and Flash Attention 2 compatibility, as well as the ability to compile the model.
-
-## 📖 Quick Index
-* [Installation](#installation)
-* [Usage](#usage)
-  - [🎲 Using a random voice](#-random-voice)
-  - [🎯 Using a specific speaker](#-using-a-specific-speaker)
-* [Training](#training)
-* [Demo](https://huggingface.co/spaces/parler-tts/parler_tts)
-* [Model weights and datasets](https://huggingface.co/parler-tts)
-* [Optimizing inference](#-optimizing-inference-speed)
-
-## Installation
-
-Parler-TTS has light-weight dependencies and can be installed in one line:
-
-```sh
-pip install git+https://github.com/huggingface/parler-tts.git
 ```
-
-Apple Silicon users will need to run a follow-up command to make use the nightly PyTorch (2.4) build for bfloat16 support:
-
-```sh
-pip3 install --pre torch torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
-```
-
-## Usage
-
-> [!TIP]
-> You can directly try it out in an interactive demo [here](https://huggingface.co/spaces/parler-tts/parler_tts)!
-
-Using Parler-TTS is as simple as "bonjour". Simply install the library once:
-
-```sh
-pip install git+https://github.com/huggingface/parler-tts.git
+git clone https://github.com/afrizalhasbi/parler-tts
+cd parler-tts
+pip install --quiet -e .[train]
 ```
 
 ### 🎲 Random voice
