@@ -3,7 +3,7 @@
 ```
 git clone https://github.com/afrizalhasbi/parler-tts
 cd parler-tts
-pip install --quiet -e .[train]
+pip install -e .[train]
 ```
 
 ### Train
