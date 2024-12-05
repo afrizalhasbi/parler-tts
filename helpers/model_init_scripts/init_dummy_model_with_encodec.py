@@ -8,7 +8,7 @@ from parler_tts import ParlerTTSDecoderConfig, ParlerTTSForCausalLM, ParlerTTSFo
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("save_directory", type=str, help="Directory where to save the model and the decoder.")
+    parser.add_argument("--save_directory", type=str, help="Directory where to save the model and the decoder.", default="custom)
     args = parser.parse_args()
 
     text_model = "google-t5/t5-small"
