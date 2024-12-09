@@ -4,6 +4,7 @@
 git clone https://github.com/afrizalhasbi/parler-tts
 cd parler-tts
 pip install -e .[train]
+FLASH_ATTENTION_SKIP_CUDA_BUILD=TRUE pip install flash-attn --no-build-isolation
 ```
 
 ### Train
