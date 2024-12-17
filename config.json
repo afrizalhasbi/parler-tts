@@ -1,13 +1,13 @@
 {
     "model_name_or_path": "feedloop-ai/parler-tts-mini-v1-bf16",
+    "description_tokenizer_name":"feedloop-ai/parler-tts-mini-v1-bf16",
+    "feature_extractor_name": "ylacombe/dac_44khZ_8kbps",
+    "prompt_tokenizer_name":"google/flan-t5-large",
+
     "save_to_disk":  "./tmp_dataset_audio/",
     "temporary_save_to_disk": "./audio_code_tmp/",
 
     "wandb_project": "parler-tuning",
-
-    "feature_extractor_name":"feedloop-ai/parler-tts-mini-v1-bf16",
-    "description_tokenizer_name":"feedloop-ai/parler-tts-mini-v1-bf16",
-    "prompt_tokenizer_name":"google/flan-t5-large",
 
     "report_to": ["wandb"],
     "overwrite_output_dir": true,
