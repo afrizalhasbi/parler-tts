@@ -44,6 +44,7 @@ for _ in range(n_steps):
 
 
 # now you can benefit from compilation speed-ups
+```
 ...
 
 
