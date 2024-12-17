@@ -12,6 +12,41 @@ FLASH_ATTENTION_SKIP_CUDA_BUILD=TRUE pip install flash-attn --no-build-isolation
 accelerate launch run.py config.json
 ```
 
+### Compile
+```
+import torch
+from parler_tts import ParlerTTSForConditionalGeneration
+from transformers import AutoTokenizer
+
+torch_device = "cuda:0"
+torch_dtype = torch.bfloat16
+model_name = "parler-tts/v007"
+
+# load model and tokenizer
+tokenizer = AutoTokenizer.from_pretrained(model_name) 
+model = ParlerTTSForConditionalGeneration.from_pretrained(
+    model_name,
+    attn_implementation="eager"
+).to(torch_device, dtype=torch_dtype)
+
+# compile the forward pass
+compile_mode = "default" # chose "reduce-overhead" for 3 to 4x speed-up
+model.generation_config.cache_implementation = "static"
+model.forward = torch.compile(model.forward, mode=compile_mode)
+
+# warmup
+inputs = tokenizer("This is for compilation", return_tensors="pt").to(torch_device)
+model_kwargs = {**inputs, "prompt_input_ids": inputs.input_ids, "prompt_attention_mask": inputs.attention_mask, }
+
+n_steps = 1 if compile_mode == "default" else 2
+for _ in range(n_steps):
+    _ = model.generate(**model_kwargs)
+
+
+# now you can benefit from compilation speed-ups
+...
+
+
 ### 🎲 Random voice
 
 
