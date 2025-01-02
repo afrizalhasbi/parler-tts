@@ -17,12 +17,12 @@
     "train_dataset_config_name": "default",
   
     "target_audio_column_name": "audio",
-    "description_column_name": "text_description",
+    "description_column_name": "annotation",
     "prompt_column_name": "text",
     
-    "max_duration_in_seconds": 30,
-    "min_duration_in_seconds": 2.0,
-    "max_text_length": 600,
+    "max_duration_in_seconds": 60,
+    "min_duration_in_seconds": 1.0,
+    "max_text_length": 32768,
 
     "group_by_length": true,
     "add_audio_samples_to_wandb": false,
@@ -30,10 +30,10 @@
 
     "preprocessing_num_workers": 4,
     "do_train": true,
-    "max_steps": 2400,
+    "num_train_epochs": 500,
     "gradient_accumulation_steps": 16,
     "gradient_checkpointing": true,
-    "per_device_train_batch_size": 16,
+    "per_device_train_batch_size": 2,
     "learning_rate": 0.00095,
     "adam_beta1": 0.9,
     "adam_beta2": 0.99,
@@ -42,7 +42,7 @@
     "lr_scheduler_type": "constant_with_warmup",
     "warmup_ratio":  0.1,
 
-    "logging_steps": 1000,
+    "logging_steps": 1,
     "freeze_text_encoder": true,
 
 
