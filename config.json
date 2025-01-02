@@ -14,6 +14,7 @@
     "output_dir": "output-ft",
 
     "train_dataset_name": "",
+    "train_metadata_dataset_name" : "",
     "train_dataset_config_name": "default",
   
     "target_audio_column_name": "audio",
